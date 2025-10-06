@@ -1,0 +1,5 @@
+srun -A cell -p cpucourt -t 10:00:00 --ntasks=1 --cpus-per-task=1 --pty bash -i
+export myport=1600
+echo "ssh -NL $myport:$(hostname):$myport $USER@login-hpc.univ-cotedazur.fr" 
+conda activate scanpy_recent
+jupyter lab --no-browser --port=$myport --ip='0.0.0.0' 

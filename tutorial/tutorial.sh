@@ -1,4 +1,4 @@
-outdir="/data/analysis/data_becavin/scmusketeers"
+outdir="/data/analysis/data_becavin/scMusketeers-data"
 dataset=${outdir}"/data/Deprez-Lung-unknown-0.2.h5ad"
 outname=Deprez-Lung-unknown-0.2-pred
 classkey="celltype"

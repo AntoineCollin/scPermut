@@ -1,0 +1,23 @@
+
+srun -A cell -p gpu -t 10:00:00 --gres=gpu:1 --pty bash -i
+export myport=1600
+# Run locally in your terminal
+echo "ssh -NL $myport:$(hostname):$myport $USER@login-hpc.univ-cotedazur.fr"
+
+
+### On scmusk conda env
+jupyter lab --no-browser --port=$myport --ip='0.0.0.0' 
+
+### With singularity
+# Run locally in your terminal
+echo "ssh -NL $myport:$(hostname):$myport $USER@login-hpc.univ-cotedazur.fr"
+
+workflow_path=/workspace/cell/home_acollin/dca_permuted_workflow
+workflow_path=/workspace/cell/
+notebook_path=/data/scmusk_workflow/
+singularity_path=/workspace/cell/scPermut_Antoine/singularity_scPermut.sif
+module load singularity-ce
+### With singularity
+#singularity exec --nv --cleanenv --bind ${workflow_path}:${notebook_path} --bind $PWD:/run/user ${singularity_path} jupyter lab --notebook-dir=${notebook_path} --no-browser --ip=0.0.0.0 --port=${myport}
+
+## shutdown forwarding port by visual studio code
